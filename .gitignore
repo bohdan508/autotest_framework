@@ -1,0 +1,15 @@
+# Virtual env
+.venv/
+
+# Env / secrets (keep .env.example)
+config/.env
+
+# Reports
+#allure-results/
+#allure-report/
+#report.html
+
+ IDE / OS / .MD files
+.idea/
+CLAUDE.md
+LEARNING.md
