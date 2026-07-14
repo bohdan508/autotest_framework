@@ -9,7 +9,10 @@ config/.env
 #allure-report/
 #report.html
 
- IDE / OS / .MD files
+# Python bytecode cache (every folder, any depth)
+__pycache__/
+
+# IDE / OS / .MD files
 .idea/
 CLAUDE.md
 LEARNING.md
