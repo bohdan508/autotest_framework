@@ -1,8 +1,8 @@
 """API - one object that exposes every resource client."""
 
+from clients.accounts_api import AccountsApi
 from clients.base_client import BaseClient
 from clients.products_api import ProductsApi
-from clients.accounts_api import AccountsApi
 
 
 class Api:

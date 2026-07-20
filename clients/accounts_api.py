@@ -16,17 +16,27 @@ class AccountsApi:
         """POST /verifyLogin - returns 'User exists!' if the data is right and user was crested before."""
         return self.client.post('/verifyLogin', data={'email': email, 'password': password})
 
+    def exists(self, email: str, password: str) -> bool:
+        """True if the credentials are valid (verifyLogin -> responseCode 200)."""
+        return self.verify_login(email, password).status_code == 200
+
     def create_account(self, user: User) -> ApiResponse:
         """POST /createAccount - returns 'User created!' on success."""
-        return self.client.post('/createAccount', data=user.model_dump(exclude_none=True))
+        return self.client.post(
+            '/createAccount', data=user.model_dump(exclude_none=True), retry_until_ok=True
+        )
 
     def update_account(self, user: User) -> ApiResponse:
         """PUT /updateAccount - returns 'User updated!' on success.
         Email + password identify the account, email is the lookup key,
         not editable (only delete-recreate in that case)
         """
-        return self.client.put('/updateAccount', data=user.model_dump(exclude_none=True))
+        return self.client.put(
+            '/updateAccount', data=user.model_dump(exclude_none=True), retry_until_ok=True
+        )
 
     def delete_account(self, email: str, password: str) -> ApiResponse:
         """DELETE /deleteAccount - returns 'Account deleted!' on success."""
-        return self.client.delete('/deleteAccount', data={'email': email, 'password': password})
+        return self.client.delete(
+            '/deleteAccount', data={'email': email, 'password': password}, retry_until_ok=True
+        )

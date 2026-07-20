@@ -5,9 +5,12 @@
 config/.env
 
 # Reports
-#allure-results/
-#allure-report/
+allure-results/
+allure-report/
 #report.html
+
+# Logs
+logs/
 
 # Python bytecode cache (every folder, any depth)
 __pycache__/

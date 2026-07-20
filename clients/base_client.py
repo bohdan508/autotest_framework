@@ -1,5 +1,6 @@
 import json
 import logging
+import time
 from typing import Any
 
 import allure
@@ -8,6 +9,16 @@ import requests
 from config.settings import settings
 
 logger = logging.getLogger("autotest.http")
+
+"""
+Retry policy. Transport errors (requests.ConnectionError, requests.Timeout) 
+and 5xx are always retried Body-level error codes are only retried when retry_until_ok=True
+(positive operations that expect success), negative tests keep the default and get 
+their error back on the first try, unmasked.
+"""
+_MAX_ATTEMPTS = 3
+_BACKOFF_SECONDS = 0.5
+_TRANSIENT_CODES = frozenset({500, 502, 503, 504})  # immutable set
 
 
 class _TimeoutSession(requests.Session):
@@ -39,10 +50,9 @@ class ApiResponse:
         return self.response.status_code
 
     @property
-    def response_code(self) -> int | None:
+    def status_code(self) -> int | None:
         """The API's real status code, read from the body."""
-        body = self.response.json()
-        return body.get("responseCode") if isinstance(body, dict) else None
+        return _response_code(self.response)
 
     @property
     def json(self) -> str:
@@ -80,13 +90,24 @@ class BaseClient:
         """requests response-hook: log the request/response line and attach
         both bodies to the Allure report."""
         request = response.request
-        logger.info(
-            "%s %s -> %s (%.0f ms)",
+        code = _response_code(response)
+        # HTTP status is uselessly always 200 here; the responseCode is the real
+        # status, so an error code logs at WARNING to stand out in the trace.
+        level = logging.INFO if (code or 0) < 400 else logging.WARNING
+        logger.log(
+            level,
+            "%s %s -> HTTP %s responseCode=%s (%.0f ms)",
             request.method,
             request.url,
             response.status_code,
+            code,
             response.elapsed.total_seconds() * 1000,
         )
+        if request.body:
+            logger.log(level, "  request body: %s", _as_text(request.body))
+        message = _response_message(response)
+        if message is not None:
+            logger.log(level, "  response message: %s", message)
         allure.attach(
             f"{request.method} {request.url}\n\n{_as_text(request.body)}",
             name="request",
@@ -98,21 +119,46 @@ class BaseClient:
             attachment_type=allure.attachment_type.JSON,
         )
 
-    def get(self, path: str, **kwargs: Any) -> ApiResponse:
-        """Perform a GET and returns an ApiResponse class."""
-        return ApiResponse(self.session.get(self._url(path), **kwargs))
+    def _request(
+        self, method: str, path: str, *, retry_until_ok: bool = False, **kwargs: Any
+    ) -> ApiResponse:
+        """Send a request, retry failures (_TRANSIENT_CODES and retry_until_ok)."""
+        url = self._url(path)
+        for attempt in range(1, _MAX_ATTEMPTS + 1):
+            last = attempt == _MAX_ATTEMPTS
+            try:
+                response = self.session.request(method, url, **kwargs)
+            except (requests.ConnectionError, requests.Timeout):
+                if last:
+                    raise  # exit with ConnectionError/Timeout
+                logger.warning(
+                    "  retrying %s %s after transport error (attempt %d/%d)",
+                    method, url, attempt + 1, _MAX_ATTEMPTS,
+                )
+            else:
+                if last or not _should_retry(response, retry_until_ok):
+                    return ApiResponse(response)
+                logger.warning(
+                    "  retrying %s %s, responseCode=%s (attempt %d/%d)",
+                    method, url, _response_code(response), attempt + 1, _MAX_ATTEMPTS,
+                )
+            time.sleep(_BACKOFF_SECONDS * attempt)
 
-    def post(self, path: str, **kwargs: Any) -> ApiResponse:
-        """Perform a POST and returns an ApiResponse class."""
-        return ApiResponse(self.session.post(self._url(path), **kwargs))
+    def get(self, path: str, *, retry_until_ok: bool = False, **kwargs: Any) -> ApiResponse:
+        """Perform a GET and return an ApiResponse."""
+        return self._request("GET", path, retry_until_ok=retry_until_ok, **kwargs)
 
-    def put(self, path: str, **kwargs: Any) -> ApiResponse:
-        """Perform a PUT and returns an ApiResponse class."""
-        return ApiResponse(self.session.put(self._url(path), **kwargs))
+    def post(self, path: str, *, retry_until_ok: bool = False, **kwargs: Any) -> ApiResponse:
+        """Perform a POST and return an ApiResponse."""
+        return self._request("POST", path, retry_until_ok=retry_until_ok, **kwargs)
 
-    def delete(self, path: str, **kwargs: Any) -> ApiResponse:
-        """Perform a DELETE and returns an ApiResponse class."""
-        return ApiResponse(self.session.delete(self._url(path), **kwargs))
+    def put(self, path: str, *, retry_until_ok: bool = False, **kwargs: Any) -> ApiResponse:
+        """Perform a PUT and return an ApiResponse."""
+        return self._request("PUT", path, retry_until_ok=retry_until_ok, **kwargs)
+
+    def delete(self, path: str, *, retry_until_ok: bool = False, **kwargs: Any) -> ApiResponse:
+        """Perform a DELETE and return an ApiResponse."""
+        return self._request("DELETE", path, retry_until_ok=retry_until_ok, **kwargs)
 
 
 # --------------------------------------------------------------------------- #
@@ -134,3 +180,34 @@ def _pretty(text: str) -> str:
         return json.dumps(json.loads(text), indent=2, ensure_ascii=False)
     except (ValueError, TypeError):
         return text
+
+
+def _response_code(response: requests.Response) -> Any:
+    """The API's real status (responseCode) from the JSON body, or None."""
+    try:
+        body = response.json()
+    except ValueError:
+        return None
+    return body.get("responseCode") if isinstance(body, dict) else None
+
+
+def _response_message(response: requests.Response) -> Any:
+    """The API's message from the JSON body, or None."""
+    try:
+        body = response.json()
+    except ValueError:
+        return None
+    return body.get("message") if isinstance(body, dict) else None
+
+
+def _should_retry(response: requests.Response, retry_until_ok: bool) -> bool:
+    """Whether a (successfully received) response should be retried.
+
+    - 5xx responseCodes are always retried
+    - Any error responseCode is retried only when the caller sets retry_until_ok (left False
+    for negative tests to get their 4xx returns immediately
+    """
+    code = _response_code(response)
+    if code in _TRANSIENT_CODES:
+        return True
+    return retry_until_ok and isinstance(code, int) and code >= 400
