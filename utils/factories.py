@@ -1,6 +1,7 @@
 """Test-data factories to create object with one call"""
 
 from faker import Faker
+from uuid import uuid4
 
 from models.user import User
 
@@ -30,9 +31,9 @@ def make_user(**overrides) -> User:
     dob = fake.date_of_birth(minimum_age=18, maximum_age=80)
     defaults = {
         "name": fake.name(),
-        "email": fake.unique.email(),
+        "email": f"aqa_{uuid4().hex[:12]}@example.com",
         "password": fake.password(length=12),
-        "title": fake.random_element(("Mr", "Mrs", "Miss")),
+        "title": fake.random_element(("Mr", "Mrs")),
         "birth_date": str(dob.day),
         "birth_month": dob.strftime("%B"),
         "birth_year": str(dob.year),
