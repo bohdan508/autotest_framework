@@ -10,11 +10,12 @@ class AccountsApi:
 
     def get_user_by_email(self, email: str) -> ApiResponse:
         """GET /getUserDetailByEmail - returns user details by email."""
-        return self.client.get('/getUserDetailByEmail', params={'email': email})
+        return self.client.get("/getUserDetailByEmail", params={"email": email})
 
     def verify_login(self, email: str, password: str) -> ApiResponse:
-        """POST /verifyLogin - returns 'User exists!' if the data is right and user was crested before."""
-        return self.client.post('/verifyLogin', data={'email': email, 'password': password})
+        """POST /verifyLogin - returns 'User exists!' if the data is right
+        and user was created before."""
+        return self.client.post("/verifyLogin", data={"email": email, "password": password})
 
     def exists(self, email: str, password: str) -> bool:
         """True if the credentials are valid (verifyLogin -> responseCode 200)."""
@@ -23,7 +24,7 @@ class AccountsApi:
     def create_account(self, user: User) -> ApiResponse:
         """POST /createAccount - returns 'User created!' on success."""
         return self.client.post(
-            '/createAccount', data=user.model_dump(exclude_none=True), retry_until_ok=True
+            "/createAccount", data=user.model_dump(exclude_none=True), retry_until_ok=True
         )
 
     def update_account(self, user: User) -> ApiResponse:
@@ -32,11 +33,11 @@ class AccountsApi:
         not editable (only delete-recreate in that case)
         """
         return self.client.put(
-            '/updateAccount', data=user.model_dump(exclude_none=True), retry_until_ok=True
+            "/updateAccount", data=user.model_dump(exclude_none=True), retry_until_ok=True
         )
 
     def delete_account(self, email: str, password: str) -> ApiResponse:
         """DELETE /deleteAccount - returns 'Account deleted!' on success."""
         return self.client.delete(
-            '/deleteAccount', data={'email': email, 'password': password}, retry_until_ok=True
+            "/deleteAccount", data={"email": email, "password": password}, retry_until_ok=True
         )

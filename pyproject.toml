@@ -1,0 +1,15 @@
+# Project config file. Right now it holds only the ruff (linter/formatter)
+# settings — ruff reads [tool.ruff] from here automatically.
+
+[tool.ruff]
+target-version = "py311"   # lint/format for the Python version this project uses
+line-length = 100
+
+[tool.ruff.lint]
+# Which rule groups to enforce. Kept deliberately lean:
+#   E  = pycodestyle errors (basic style)
+#   F  = pyflakes           (unused imports, undefined names — real bugs)
+#   I  = isort              (import ordering)
+#   B  = flake8-bugbear     (likely-bug patterns)
+#   UP = pyupgrade          (flag old syntax that has a modern form)
+select = ["E", "F", "I", "B", "UP"]

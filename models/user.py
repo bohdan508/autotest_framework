@@ -14,7 +14,7 @@ class User(BaseModel):
     password: str
 
     # --- optional: sent only when set -------------------------------------- #
-    title: str | None = None  # "Mr" / "Mrs" / "Miss"
+    title: str | None = None  # "Mr" / "Mrs"
     birth_date: str | None = None  # day, e.g. "15"
     birth_month: str | None = None  # f.e "May"
     birth_year: str | None = None  # f.e "1990"

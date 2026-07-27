@@ -1,0 +1,28 @@
+# Lint workflow — fast, deterministic, no network. Runs on EVERY push and PR.
+# This is the cheap gate on every change (unlike the tests, which hit a live site).
+
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  ruff:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Get the code onto the runner.
+      - uses: actions/checkout@v4
+
+      # 2. Install Python 3.11 (the version this project targets).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3. Install just the dev tools (ruff), not the whole test stack.
+      - run: pip install -r requirements-dev.txt
+
+      # 4. Lint: unused imports, undefined names, import order, etc.
+      - run: ruff check .
+
+      # 5. Formatting check: fails if any file isn't formatted the way
+      #    `ruff format` would write it. (--check = report only, don't rewrite.)
+      - run: ruff format --check .

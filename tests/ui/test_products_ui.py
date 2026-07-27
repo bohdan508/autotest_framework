@@ -6,7 +6,7 @@ from playwright.sync_api import expect
 
 
 @pytest.mark.smoke
-@allure.title('UI add product to cart')
+@allure.title("UI add product to cart")
 def test_add_to_cart(api_facade, pages):
     product = api_facade.products.list_products().json["products"][0]
     pages.products.open()
@@ -18,7 +18,7 @@ def test_add_to_cart(api_facade, pages):
     expect(row.total).to_have_text(product["price"])
 
 
-@allure.title('UI Delete product from cart')
+@allure.title("UI Delete product from cart")
 def test_delete_from_cart(product_in_cart, page, pages):
     row = pages.cart.row(product_in_cart["id"])
     row.delete()
@@ -26,7 +26,7 @@ def test_delete_from_cart(product_in_cart, page, pages):
     expect(pages.cart.empty_cart_message).to_be_visible()
 
 
-@allure.title('UI checkout flow')
+@allure.title("UI checkout flow")
 def test_checkout(logged_in_user, product_in_cart, page, pages):
     pages.cart.proceed_to_checkout()
 

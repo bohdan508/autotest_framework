@@ -1,0 +1,90 @@
+# Test workflow — runs the suite and publishes the latest Allure report to
+# GitHub Pages
+
+name: Tests
+
+on:
+  # Run the FULL suite when actual code changes (docs/README edits are ignored).
+  push:
+    paths: &code_paths
+      - "clients/**"
+      - "pages/**"
+      - "components/**"
+      - "models/**"
+      - "utils/**"
+      - "tests/**"
+      - "config/**"
+      - "conftest.py"
+      - "pytest.ini"
+      - "requirements.txt"
+  pull_request:
+    paths: *code_paths
+  # Nightly: a fast smoke run to keep the report fresh and catch the
+  # site breaking overnight. 03:00 UTC every day.
+  schedule:
+    - cron: "0 3 * * *"
+  # A manual "Run workflow" button in the Actions tab.
+  workflow_dispatch:
+
+# The publish step pushes the report to the gh-pages branch, which needs write
+# access to the repo contents.
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Get the code.
+      - uses: actions/checkout@v4
+
+      # 2. Python 3.11, with pip's download cache reused between runs.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      # 3. Install the test stack (requests, pytest, playwright, allure-pytest…).
+      - run: pip install -r requirements.txt
+
+      # 4. Install the Chromium browser Playwright drives (--with-deps pulls the
+      #    system libraries it needs on Ubuntu). Only chromium — that's the default.
+      - run: python -m playwright install --with-deps chromium
+
+      # 5. Run the tests, writing Allure result files into allure-results/.
+      #    Nightly (schedule) runs the fast smoke subset; every other trigger
+      #    runs the full suite. continue-on-error: a red suite still lets the
+      #    report publish below.
+      - name: Run tests
+        continue-on-error: true
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            pytest -m smoke --alluredir=allure-results
+          else
+            pytest --alluredir=allure-results
+          fi
+
+      # 6. Allure's report generator is a Java tool so install a JRE
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # 7. Install Allure command-line tool (shipped as npm package;
+      #    Node is preinstalled on the runner).
+      - run: npm install -g allure-commandline
+
+      # 8. Turn the raw result files into a static HTML site in allure-report/.
+      #    --clean wipes any previous output first. No history is merged in, so
+      #    the report always reflects only this run.
+      - run: allure generate allure-results --clean -o allure-report
+
+      # 9. Publish that folder to the gh-pages branch. force_orphan keeps the
+      #    branch to a single commit (latest report only — no growing history),
+      #    which is exactly the "just the last result" behaviour we want.
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
+          force_orphan: true

@@ -41,15 +41,14 @@ class SignupPage(BasePage):
 
         # --- submit -------------------------------------------------------------
         self.create_account_button = page.locator('[data-qa="create-account"]')
-        self.signup_success = page.get_by_text('Account created!')
+        self.signup_success = page.get_by_text("Account created!")
 
     def select_title(self, title: str) -> None:
         """Pick the Mr/Mrs radio"""
         (self.title_mr if title == "Mr" else self.title_mrs).check()
 
     def fill_account(self, user: User) -> None:
-        """Fill the whole account form from a User model and submit.
-        """
+        """Fill the whole account form from a User model and submit."""
         if user.title:
             self.select_title(user.title)
         self.password.fill(user.password)

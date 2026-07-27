@@ -49,8 +49,9 @@ class UserUiActions:
     @property
     def _pages(self) -> Pages:
         if self.base.pages is None:
-            raise RuntimeError("UserEntity was built without a pages facade; "
-                               "pass pages=... to use .ui actions")
+            raise RuntimeError(
+                "UserEntity was built without a pages facade; pass pages=... to use .ui actions"
+            )
         return self.base.pages
 
     def create(self) -> None:

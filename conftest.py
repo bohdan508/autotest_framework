@@ -79,7 +79,7 @@ def user_entity(api_facade, pages):
     """A created UserEntity - data + .api actions"""
     user = UserEntity(api_facade, make_user(), pages)
     user.api.create()
-    wait_until(user.api.exists, message='user should exist after create')
+    wait_until(user.api.exists, message="user should exist after create")
     yield user
     user.api.delete()
 

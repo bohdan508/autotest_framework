@@ -69,9 +69,7 @@ class BaseClient:
     """Base HTTP client. Resource clients wrap an instance of this rather than
     talking to requests directly."""
 
-    def __init__(
-        self, base_url: str | None = None, timeout: float | None = None
-    ) -> None:
+    def __init__(self, base_url: str | None = None, timeout: float | None = None) -> None:
         self.base_url = (base_url or settings.api_url).rstrip("/")
         self.session = _TimeoutSession(timeout or settings.timeout)
         self.session.headers.update({"Accept": "application/json"})
@@ -84,9 +82,7 @@ class BaseClient:
         return f"{self.base_url}/{path.lstrip('/')}"
 
     # --------------------------------------------------------------- logging #
-    def _log_response(
-        self, response: requests.Response, *args: Any, **kwargs: Any
-    ) -> None:
+    def _log_response(self, response: requests.Response, *args: Any, **kwargs: Any) -> None:
         """requests response-hook: log the request/response line and attach
         both bodies to the Allure report."""
         request = response.request
@@ -133,14 +129,21 @@ class BaseClient:
                     raise  # exit with ConnectionError/Timeout
                 logger.warning(
                     "  retrying %s %s after transport error (attempt %d/%d)",
-                    method, url, attempt + 1, _MAX_ATTEMPTS,
+                    method,
+                    url,
+                    attempt + 1,
+                    _MAX_ATTEMPTS,
                 )
             else:
                 if last or not _should_retry(response, retry_until_ok):
                     return ApiResponse(response)
                 logger.warning(
                     "  retrying %s %s, responseCode=%s (attempt %d/%d)",
-                    method, url, _response_code(response), attempt + 1, _MAX_ATTEMPTS,
+                    method,
+                    url,
+                    _response_code(response),
+                    attempt + 1,
+                    _MAX_ATTEMPTS,
                 )
             time.sleep(_BACKOFF_SECONDS * attempt)
 

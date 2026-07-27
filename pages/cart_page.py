@@ -11,7 +11,7 @@ class CartPage(BasePage):
 
     def __init__(self, page: Page) -> None:
         super().__init__(page)
-        self.empty_cart_message = page.get_by_text('Cart is empty!')
+        self.empty_cart_message = page.get_by_text("Cart is empty!")
 
     def row(self, product_id: int) -> CartRow:
         """The cart row for a product, identified by its id (tr id='product-N')."""

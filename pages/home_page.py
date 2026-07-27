@@ -6,7 +6,6 @@ from pages.base_page import BasePage
 
 
 class HomePage(BasePage):
-
     def __init__(self, page: Page) -> None:
         super().__init__(page)
         self.logout_link = page.get_by_role("link", name="Logout")

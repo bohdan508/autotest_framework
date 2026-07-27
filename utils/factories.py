@@ -1,7 +1,8 @@
 """Test-data factories to create object with one call"""
 
-from faker import Faker
 from uuid import uuid4
+
+from faker import Faker
 
 from models.user import User
 

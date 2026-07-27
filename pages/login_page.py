@@ -18,12 +18,12 @@ class LoginPage(BasePage):
         self.login_email = page.locator('[data-qa="login-email"]')
         self.login_password = page.locator('[data-qa="login-password"]')
         self.login_button = page.locator('[data-qa="login-button"]')
-        self.login_error = page.get_by_text('Your email or password is incorrect!')
+        self.login_error = page.get_by_text("Your email or password is incorrect!")
         # --- signup form ---
         self.signup_name = page.locator('[data-qa="signup-name"]')
         self.signup_email = page.locator('[data-qa="signup-email"]')
         self.signup_button = page.locator('[data-qa="signup-button"]')
-        self.signup_error_duplicate = page.get_by_text('Email Address already exist!')
+        self.signup_error_duplicate = page.get_by_text("Email Address already exist!")
 
     def login(self, email: str, password: str) -> None:
         """Fill the login form and submit."""
