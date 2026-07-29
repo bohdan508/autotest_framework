@@ -3,6 +3,7 @@
 import re
 from collections.abc import Iterator
 
+import allure
 import pytest
 
 from clients.api import Api
@@ -23,6 +24,27 @@ def pytest_configure(config: pytest.Config) -> None:
     run.log at the project root for API and UI test.
     """
     config.option.log_file = str(config.rootpath / "logs" / "run.log")
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """Attach a screenshot to the Allure report when a UI test fails.
+
+    pytest-playwright already saves a screenshot to disk on failure, but nothing
+    wires it into Allure. This hook runs during the test's 'call' phase (the page
+    is still open) and, on failure, grabs the live page and attaches it. API tests
+    have no 'page' fixture, so they're skipped.
+    """
+    outcome = yield
+    report = outcome.get_result()
+    if report.when == "call" and report.failed:
+        page = item.funcargs.get("page")
+        if page is not None:
+            allure.attach(
+                page.screenshot(full_page=True),
+                name="screenshot-on-failure",
+                attachment_type=allure.attachment_type.PNG,
+            )
 
 
 @pytest.fixture(scope="session")
