@@ -29,3 +29,6 @@ class User(BaseModel):
     state: str | None = None
     city: str | None = None
     mobile_number: str | None = None
+    card_number: str | None = None
+    card_cvc: str | None = None
+    card_exp_date: str | None = None

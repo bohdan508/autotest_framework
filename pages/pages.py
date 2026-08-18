@@ -10,6 +10,7 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
+from pages.payment_page import PaymentPage
 from pages.products_page import ProductsPage
 from pages.signup_page import SignupPage
 
@@ -22,3 +23,4 @@ class Pages:
         self.products = ProductsPage(page)
         self.cart = CartPage(page)
         self.checkout = CheckoutPage(page)
+        self.payment = PaymentPage(page)

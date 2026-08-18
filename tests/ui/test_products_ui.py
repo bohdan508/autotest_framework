@@ -27,13 +27,30 @@ def test_delete_from_cart(product_in_cart, page, pages):
 
 
 @allure.title("UI checkout flow")
-def test_checkout(logged_in_user, product_in_cart, page, pages):
+def test_checkout_payment(logged_in_user, product_in_cart, page, pages):
     pages.cart.proceed_to_checkout()
 
-    row = pages.checkout.row(product_in_cart["id"])
-    expect(row.name).to_have_text(product_in_cart["name"])
+    row = pages.checkout.row(product_in_cart.id)
+    expect(row.name).to_have_text(product_in_cart.name)
 
     pages.checkout.add_comment("Test comment")
     pages.checkout.place_order()
 
     expect(page).to_have_url(re.compile(r"/payment"))
+
+    pages.payment.fill_payment_data(logged_in_user.data)
+
+    expect(page).to_have_url(f"/payment_done/{product_in_cart.price_value}")
+    expect(pages.payment.payment_success).to_be_visible()
+
+    with page.expect_download() as download_info:
+        pages.payment.download_invoice.click()
+
+    download = download_info.value
+    file_path = download.path()
+
+    with open(file_path, "r") as file:
+        content = file.read()
+
+    assert content == (f"Hi {logged_in_user.data.name}, Your total purchase amount "
+                       f"is {product_in_cart.price_value}. Thank you")

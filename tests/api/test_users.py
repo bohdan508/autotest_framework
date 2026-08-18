@@ -46,7 +46,6 @@ def test_get_user(user_entity):
 @allure.title("Get user with non-existent email")
 def test_get_user_not_found(api_facade):
     response = api_facade.accounts.get_user_by_email("not_existent@nowhere.com")
-    print(response.json)
 
     assert response.status_code == 404
     assert response.json["message"] == "Account not found with this email, try another email!"

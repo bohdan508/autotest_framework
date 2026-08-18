@@ -1,5 +1,6 @@
 """Root pytest fixtures."""
 
+import random
 import re
 from collections.abc import Iterator
 
@@ -13,6 +14,7 @@ from config.settings import settings
 from pages.pages import Pages
 from utils.factories import make_user
 from utils.wait import wait_until
+from models.product import Product
 
 
 @pytest.hookimpl(tryfirst=True)
@@ -115,8 +117,11 @@ def logged_in_user(user_entity):
 
 @pytest.fixture
 def product_in_cart(api_facade, pages):
-    product = api_facade.products.list_products().json["products"][0]
+    response = api_facade.products.list_products()
+    products = [Product(**p) for p in response.json["products"]]
+    product = products[random.randint(0, len(products))]
+
     pages.products.open()
-    pages.products.add_to_cart_by_id(product["id"])
+    pages.products.add_to_cart_by_id(product.id)
     pages.products.view_cart()
     return product

@@ -55,7 +55,7 @@ class ApiResponse:
         return _response_code(self.response)
 
     @property
-    def json(self) -> str:
+    def json(self) -> dict:
         """Added in order not to have .response before .json() every time"""
         return self.response.json()
 

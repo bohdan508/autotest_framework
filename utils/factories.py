@@ -8,6 +8,7 @@ from models.user import User
 
 fake = Faker()
 
+
 # The site accepts only this fixed set of countries; Faker's country() would
 # return unsupported values
 _COUNTRIES = (
@@ -29,17 +30,19 @@ def make_user(**overrides) -> User:
         make_user(name="Ada", title="Mrs")  # some fields are user input
         make_user(password=None)            # drop a field to test negative scenario
     """
+    first_name = fake.first_name()
+    last_name = fake.last_name()
     dob = fake.date_of_birth(minimum_age=18, maximum_age=80)
     defaults = {
-        "name": fake.name(),
+        "name": f"{first_name} {last_name}",
         "email": f"aqa_{uuid4().hex[:12]}@example.com",
         "password": fake.password(length=12),
         "title": fake.random_element(("Mr", "Mrs")),
         "birth_date": str(dob.day),
         "birth_month": dob.strftime("%B"),
         "birth_year": str(dob.year),
-        "firstname": fake.first_name(),
-        "lastname": fake.last_name(),
+        "firstname": first_name,
+        "lastname": last_name,
         "company": fake.company(),
         "address1": fake.street_address(),
         "address2": fake.secondary_address(),
@@ -48,6 +51,9 @@ def make_user(**overrides) -> User:
         "state": fake.state(),
         "city": fake.city(),
         "mobile_number": fake.msisdn(),
+        "card_number": fake.credit_card_number(),
+        "card_cvc": fake.credit_card_security_code(),
+        "card_exp_date": fake.credit_card_expire()
     }
     defaults.update(overrides)
     return User(**defaults)
