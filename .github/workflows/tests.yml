@@ -5,20 +5,28 @@ name: Tests
 
 on:
   # Run the FULL suite when actual code changes (docs/README edits are ignored).
-  push:
-    paths: &code_paths
-      - "clients/**"
-      - "pages/**"
-      - "components/**"
-      - "models/**"
-      - "utils/**"
-      - "tests/**"
-      - "config/**"
-      - "conftest.py"
-      - "pytest.ini"
-      - "requirements.txt"
-  pull_request:
-    paths: *code_paths
+
+#  push:
+#    paths: &code_paths
+#      - "clients/**"
+#      - "pages/**"
+#      - "components/**"
+#      - "models/**"
+#      - "utils/**"
+#      - "tests/**"
+#      - "config/**"
+#      - "conftest.py"
+#      - "pytest.ini"
+#      - "requirements.txt"
+#  pull_request:
+#    paths: *code_paths
+
+  # Wait for the "Lint" workflow to complete before running tests on push/PR.
+  workflow_run:
+    workflows: [ "Lint" ]
+    types:
+      - completed
+
   # Nightly: a fast smoke run to keep the report fresh and catch the
   # site breaking overnight. 03:00 UTC every day.
   schedule:

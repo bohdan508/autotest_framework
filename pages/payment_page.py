@@ -7,7 +7,7 @@ from pages.base_page import BasePage
 
 
 class PaymentPage(BasePage):
-    path = '/payment'
+    path = "/payment"
 
     def __init__(self, page: Page) -> None:
         super().__init__(page)
@@ -18,12 +18,12 @@ class PaymentPage(BasePage):
         self.expiration_year = page.locator('[data-qa="expiry-year"]')
         self.confirm_button = page.locator('[data-qa="pay-button"]')
 
-        self.payment_success = page.get_by_text('Order Placed!')
-        self.download_invoice = page.get_by_text('Download Invoice')
+        self.payment_success = page.get_by_text("Order Placed!")
+        self.download_invoice = page.get_by_text("Download Invoice")
 
     def fill_payment_data(self, user: User):
-        exp_month = user.card_exp_date.split('/')[0]
-        exp_year = user.card_exp_date.split('/')[1]
+        exp_month = user.card_exp_date.split("/")[0]
+        exp_year = user.card_exp_date.split("/")[1]
         self.name_on_card.fill(user.name)
         self.card_number.fill(user.card_number)
         self.cvc.fill(user.card_cvc)

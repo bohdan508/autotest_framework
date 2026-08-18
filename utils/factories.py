@@ -53,7 +53,7 @@ def make_user(**overrides) -> User:
         "mobile_number": fake.msisdn(),
         "card_number": fake.credit_card_number(),
         "card_cvc": fake.credit_card_security_code(),
-        "card_exp_date": fake.credit_card_expire()
+        "card_exp_date": fake.credit_card_expire(),
     }
     defaults.update(overrides)
     return User(**defaults)

@@ -52,5 +52,7 @@ def test_checkout_payment(logged_in_user, product_in_cart, page, pages):
     with open(file_path) as file:
         content = file.read()
 
-    assert content == (f"Hi {logged_in_user.data.name}, Your total purchase amount "
-                       f"is {product_in_cart.price_value}. Thank you")
+    assert content == (
+        f"Hi {logged_in_user.data.name}, Your total purchase amount "
+        f"is {product_in_cart.price_value}. Thank you"
+    )
