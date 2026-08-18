@@ -1,8 +1,8 @@
 """Payment page object — automationexercise.com/payment."""
 
 from playwright.sync_api import Page
-from models.user import User
 
+from models.user import User
 from pages.base_page import BasePage
 
 

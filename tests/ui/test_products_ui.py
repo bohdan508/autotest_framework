@@ -19,8 +19,8 @@ def test_add_to_cart(api_facade, pages):
 
 
 @allure.title("UI Delete product from cart")
-def test_delete_from_cart(product_in_cart, page, pages):
-    row = pages.cart.row(product_in_cart["id"])
+def test_delete_from_cart(product_in_cart, pages):
+    row = pages.cart.row(product_in_cart.id)
     row.delete()
     expect(row.root).to_have_count(0)
     expect(pages.cart.empty_cart_message).to_be_visible()
@@ -49,7 +49,7 @@ def test_checkout_payment(logged_in_user, product_in_cart, page, pages):
     download = download_info.value
     file_path = download.path()
 
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         content = file.read()
 
     assert content == (f"Hi {logged_in_user.data.name}, Your total purchase amount "

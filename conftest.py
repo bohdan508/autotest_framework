@@ -11,10 +11,10 @@ from clients.api import Api
 from clients.base_client import BaseClient
 from components.user import UserEntity
 from config.settings import settings
+from models.product import Product
 from pages.pages import Pages
 from utils.factories import make_user
 from utils.wait import wait_until
-from models.product import Product
 
 
 @pytest.hookimpl(tryfirst=True)
