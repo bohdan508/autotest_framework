@@ -18,14 +18,25 @@ def retry(times=3, pause=1, exceptions=(Exception,)):
                     if attempt < times:
                         logger.info(
                             "%s failed on attempt %d/%d (%s: %s), retrying in %.1fs",
-                            func.__name__, attempt, times, type(e).__name__, e, pause,
+                            func.__name__,
+                            attempt,
+                            times,
+                            type(e).__name__,
+                            e,
+                            pause,
                         )
                         time.sleep(pause)
                     else:
                         logger.warning(
                             "%s failed on attempt %d/%d (%s: %s), giving up",
-                            func.__name__, attempt, times, type(e).__name__, e,
+                            func.__name__,
+                            attempt,
+                            times,
+                            type(e).__name__,
+                            e,
                         )
             raise last_exception
+
         return wrapper
+
     return decorator
