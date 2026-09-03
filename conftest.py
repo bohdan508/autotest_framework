@@ -100,7 +100,7 @@ def pages(page) -> Pages:
 
 @pytest.fixture
 def user_entity(api_facade, pages):
-    """A created UserEntity - data + .api actions"""
+    """A created UserEntity - data + .api/ui actions"""
     user = UserEntity(api_facade, make_user(), pages)
     user.api.create()
     wait_until(user.api.exists, message="user should exist after create")

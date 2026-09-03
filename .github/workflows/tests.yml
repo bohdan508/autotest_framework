@@ -5,30 +5,26 @@ name: Tests
 
 on:
   # Run the FULL suite when actual code changes (docs/README edits are ignored).
+  # Deliberately a DENYLIST, not a list of code paths: an allowlist only matches
+  # the directories it names, so a new top-level .py file — or a whole new
+  # package — would silently skip the suite. Anything that isn't docs runs.
 
-#  push:
-#    paths: &code_paths
-#      - "clients/**"
-#      - "pages/**"
-#      - "components/**"
-#      - "models/**"
-#      - "utils/**"
-#      - "tests/**"
-#      - "config/**"
-#      - "conftest.py"
-#      - "pytest.ini"
-#      - "requirements.txt"
-#  pull_request:
-#    paths: *code_paths
-
-  # Wait for the "Lint" workflow to complete before running tests on push/PR.
-  workflow_run:
-    workflows: [ "Lint" ]
-    types:
-      - completed
+  # (Listed twice rather than via a YAML anchor: anchors are not a documented
+  # GitHub Actions feature, and three duplicated lines beat an unguaranteed one.)
+  push:
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+      - ".gitignore"
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+      - ".gitignore"
 
   # Nightly: a fast smoke run to keep the report fresh and catch the
   # site breaking overnight. 03:00 UTC every day.
+  # NOTE: GitHub disables scheduled workflows after 60 days of repo inactivity.
   schedule:
     - cron: "0 3 * * *"
   # A manual "Run workflow" button in the Actions tab.
@@ -38,6 +34,12 @@ on:
 # access to the repo contents.
 permissions:
   contents: write
+
+# Two runs finishing at once would both force-push an orphan gh-pages branch and
+# race each other. Serialize them instead; don't cancel a run mid-publish.
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
 
 jobs:
   test:
@@ -62,8 +64,10 @@ jobs:
       # 5. Run the tests, writing Allure result files into allure-results/.
       #    Nightly (schedule) runs the fast smoke subset; every other trigger
       #    runs the full suite. continue-on-error: a red suite still lets the
-      #    report publish below.
+      #    report publish below — step 10 then fails the job, so the check
+      #    stays honest.
       - name: Run tests
+        id: pytest
         continue-on-error: true
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
@@ -96,3 +100,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
           force_orphan: true
+
+      # 10. Now that the report is published, fail the job if the suite was red.
+      #     Without this, continue-on-error above leaves the whole workflow green
+      #     on failing tests. 'outcome' is the step's result BEFORE
+      #     continue-on-error is applied, so it still sees the failure.
+      - name: Reflect test result
+        if: steps.pytest.outcome == 'failure'
+        run: |
+          echo "::error::Test suite failed — see the published Allure report."
+          exit 1

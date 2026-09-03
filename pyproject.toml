@@ -4,6 +4,10 @@
 [tool.ruff]
 target-version = "py311"   # lint/format for the Python version this project uses
 line-length = 100
+# Skill scaffolding under .claude/ holds placeholder templates, not project source
+# (e.g. .claude/skills/*/templates/*.py use UPPERCASE placeholders that aren't real
+# code), so keep the linter/formatter off it.
+extend-exclude = [".claude"]
 
 [tool.ruff.lint]
 # Which rule groups to enforce. Kept deliberately lean:

@@ -26,7 +26,7 @@ def test_delete_from_cart(product_in_cart, pages):
     expect(pages.cart.empty_cart_message).to_be_visible()
 
 
-@allure.title("UI checkout flow")
+@allure.title("UI checkout and payment flow")
 def test_checkout_payment(logged_in_user, product_in_cart, page, pages):
     pages.cart.proceed_to_checkout()
 

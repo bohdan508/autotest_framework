@@ -19,3 +19,6 @@ __pycache__/
 .idea/
 CLAUDE.md
 LEARNING.md
+
+# Claude Code — commit .claude/ (settings, skills), but keep personal overrides out
+.claude/settings.local.json

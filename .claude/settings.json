@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "permissions": {
+    "allow": [
+      "Bash(ruff:*)",
+      "Bash(.venv/bin/ruff:*)",
+      "Bash(pytest:*)",
+      "Bash(.venv/bin/pytest:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(.venv/bin/python -m pytest:*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath // empty' | { read -r f; [ -z \"$f\" ] && exit 0; case \"$f\" in *.py) RUFF=\"${CLAUDE_PROJECT_DIR:-.}/.venv/bin/ruff\"; [ -x \"$RUFF\" ] || RUFF=ruff; \"$RUFF\" format \"$f\"; \"$RUFF\" check --fix \"$f\";; esac; } 2>/dev/null || true",
+            "statusMessage": "Running ruff…"
+          }
+        ]
+      }
+    ]
+  }
+}

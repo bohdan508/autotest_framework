@@ -12,10 +12,15 @@ jobs:
       # 1. Get the code onto the runner.
       - uses: actions/checkout@v4
 
-      # 2. Install Python 3.11 (the version this project targets).
+      # 2. Install Python 3.11 (the version this project targets), reusing pip's
+      #    download cache between runs. cache-dependency-path is set explicitly:
+      #    pip's default hashes requirements.txt, but this job installs the dev
+      #    file, so the key has to track that one to invalidate correctly.
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
 
       # 3. Install just the dev tools (ruff), not the whole test stack.
       - run: pip install -r requirements-dev.txt
