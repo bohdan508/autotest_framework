@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Raymond+Fuller&email=aqa_70f9dcc375e0%40example.com&password=%26P%5E_u3h2a3yU&title=Mrs&birth_date=1&birth_month=September&birth_year=1977&firstname=Raymond&lastname=Fuller&company=Castro+LLC&address1=30395+Sarah+Hill+Apt.+056&address2=Suite+561&country=Canada&zipcode=71521&state=Wyoming&city=East+Rhondaland&mobile_number=1815531289190&card_number=2247163781041764&card_cvc=084&card_exp_date=10%2F29

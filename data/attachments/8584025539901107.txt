@@ -1,0 +1,13 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (376 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Jon+Ayala&email=aqa_3fa71a3d7943%40example.com&password=%25b79NxlKZ%2AUd&title=Mr&birth_date=25&birth_month=August&birth_year=1973&firstname=Jon&lastname=Ayala&company=Beck-Hunter&address1=557+Marissa+Street&address2=Suite+008&country=Canada&zipcode=42860&state=Colorado&city=South+Kristafort&mobile_number=5012468195831&card_number=4582298767996505895&card_cvc=500&card_exp_date=08%2F28
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (104 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_3fa71a3d7943%40example.com&password=%25b79NxlKZ%2AUd
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 PUT https://automationexercise.com/api/updateAccount -> HTTP 200 responseCode=200 (135 ms)
+INFO     autotest.http:base_client.py:103   request body: name=NewName&email=aqa_3fa71a3d7943%40example.com&password=%25b79NxlKZ%2AUd&title=Mr&birth_date=25&birth_month=August&birth_year=1973&firstname=Jon&lastname=Ayala&company=Beck-Hunter&address1=557+Marissa+Street&address2=Suite+008&country=Canada&zipcode=42860&state=Colorado&city=Kyiv&mobile_number=5012468195831&card_number=4582298767996505895&card_cvc=500&card_exp_date=08%2F28
+INFO     autotest.http:base_client.py:106   response message: User updated!
+INFO     autotest.http:base_client.py:93 GET https://automationexercise.com/api/getUserDetailByEmail?email=aqa_3fa71a3d7943%40example.com -> HTTP 200 responseCode=200 (112 ms)
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (108 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_3fa71a3d7943%40example.com&password=%25b79NxlKZ%2AUd
+INFO     autotest.http:base_client.py:106   response message: Account deleted!

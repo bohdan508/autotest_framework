@@ -1,0 +1,1 @@
+INFO     autotest.http:base_client.py:93 GET https://automationexercise.com/api/productsList -> HTTP 200 responseCode=200 (512 ms)

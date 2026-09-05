@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Kimberly+Holt&email=aqa_a1622a6ea34c%40example.com&password=%21g2C9%40wh58wB&title=Mr&birth_date=1&birth_month=June&birth_year=1949&firstname=Kimberly&lastname=Holt&company=Boyd%2C+Nelson+and+Nelson&address1=098+Jacob+Circles+Suite+358&address2=Suite+352&country=Canada&zipcode=23786&state=New+Jersey&city=Mitchellshire&mobile_number=8527363281457&card_number=3537092754911686&card_cvc=786&card_exp_date=09%2F35

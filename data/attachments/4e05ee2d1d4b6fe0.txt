@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Michelle+Harper&email=aqa_26f3c78c54bf%40example.com&password=x%29S6%2ASFv%40GsR&title=Mr&birth_date=19&birth_month=November&birth_year=1958&firstname=Michelle&lastname=Harper&company=Gonzalez%2C+Bryant+and+Rodriguez&address1=2655+Atkins+Vista+Apt.+001&address2=Apt.+727&country=New+Zealand&zipcode=11217&state=New+Jersey&city=West+Kara&mobile_number=2961512452118&card_number=4405781688012&card_cvc=667&card_exp_date=06%2F27

@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Jon+Ayala&email=aqa_3fa71a3d7943%40example.com&password=%25b79NxlKZ%2AUd&title=Mr&birth_date=25&birth_month=August&birth_year=1973&firstname=Jon&lastname=Ayala&company=Beck-Hunter&address1=557+Marissa+Street&address2=Suite+008&country=Canada&zipcode=42860&state=Colorado&city=South+Kristafort&mobile_number=5012468195831&card_number=4582298767996505895&card_cvc=500&card_exp_date=08%2F28

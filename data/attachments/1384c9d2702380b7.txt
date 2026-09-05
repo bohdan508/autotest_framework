@@ -1,0 +1,2 @@
+GET https://automationexercise.com/api/productsList
+

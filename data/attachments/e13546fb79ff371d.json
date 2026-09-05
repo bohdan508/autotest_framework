@@ -1,0 +1,21 @@
+{
+  "responseCode": 200,
+  "user": {
+    "id": 2721185,
+    "name": "NewName",
+    "email": "aqa_3fa71a3d7943@example.com",
+    "title": "Mr",
+    "birth_day": "25",
+    "birth_month": "August",
+    "birth_year": "1973",
+    "first_name": "Jon",
+    "last_name": "Ayala",
+    "company": "Beck-Hunter",
+    "address1": "557 Marissa Street",
+    "address2": "Suite 008",
+    "country": "Canada",
+    "state": "Colorado",
+    "city": "Kyiv",
+    "zipcode": "42860"
+  }
+}

@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Seth+Huff&email=aqa_65e2a85f39e0%40example.com&password=dF%40Mm%5Eq8NC0R&title=Mr&birth_date=16&birth_month=July&birth_year=2003&firstname=Seth&lastname=Huff&company=Clark+Group&address1=8568+Ricky+Wells&address2=Suite+095&country=Israel&zipcode=06529&state=Iowa&city=Port+Benjaminland&mobile_number=3552504869550&card_number=4775360250375998&card_cvc=122&card_exp_date=11%2F34

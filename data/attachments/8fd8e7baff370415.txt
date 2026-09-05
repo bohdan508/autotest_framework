@@ -1,0 +1,3 @@
+DELETE https://automationexercise.com/api/deleteAccount
+
+email=aqa_65e2a85f39e0%40example.com&password=dF%40Mm%5Eq8NC0R

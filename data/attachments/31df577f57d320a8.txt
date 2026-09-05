@@ -1,0 +1,12 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (146 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Angela+Hamilton&email=aqa_474ed350855b%40example.com&password=%251ZoippT99WO&title=Mrs&birth_date=4&birth_month=February&birth_year=1948&firstname=Angela&lastname=Hamilton&company=Martinez%2C+Lewis+and+Bryant&address1=9490+Lauren+Viaduct&address2=Suite+816&country=Israel&zipcode=05521&state=South+Carolina&city=Pachecofurt&mobile_number=1868167446803&card_number=30405126453757&card_cvc=019&card_exp_date=04%2F30
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (116 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_474ed350855b%40example.com&password=%251ZoippT99WO
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (127 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_474ed350855b%40example.com&password=%251ZoippT99WO
+INFO     autotest.http:base_client.py:106   response message: Account deleted!
+WARNING  autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=404 (117 ms)
+WARNING  autotest.http:base_client.py:103   request body: email=aqa_474ed350855b%40example.com&password=%251ZoippT99WO
+WARNING  autotest.http:base_client.py:106   response message: User not found!

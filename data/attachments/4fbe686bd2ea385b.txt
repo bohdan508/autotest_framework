@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/verifyLogin
+
+email=aqa_474ed350855b%40example.com&password=%251ZoippT99WO
