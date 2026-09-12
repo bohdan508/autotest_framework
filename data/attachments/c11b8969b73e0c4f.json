@@ -1,0 +1,21 @@
+{
+  "responseCode": 200,
+  "user": {
+    "id": 2776464,
+    "name": "NewName",
+    "email": "aqa_e58c47c80f24@example.com",
+    "title": "Mr",
+    "birth_day": "20",
+    "birth_month": "November",
+    "birth_year": "1950",
+    "first_name": "Johnny",
+    "last_name": "Montgomery",
+    "company": "Hughes-Johnson",
+    "address1": "00829 Joshua Harbors Apt. 142",
+    "address2": "Suite 070",
+    "country": "United States",
+    "state": "Arizona",
+    "city": "Kyiv",
+    "zipcode": "44764"
+  }
+}

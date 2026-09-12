@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Brooke+Middleton&email=aqa_d401724c1997%40example.com&password=tpjFeKab4i1%28&title=Mrs&birth_date=28&birth_month=October&birth_year=1968&firstname=Brooke&lastname=Middleton&company=Garcia+Group&address1=0100+Colleen+Locks&address2=Apt.+727&country=Canada&zipcode=70288&state=Nebraska&city=Juliechester&mobile_number=6987488585871&card_number=4194124803572626500&card_cvc=431&card_exp_date=05%2F30

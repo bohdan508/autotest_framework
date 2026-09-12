@@ -1,0 +1,3 @@
+PUT https://automationexercise.com/api/updateAccount
+
+name=NewName&email=aqa_e58c47c80f24%40example.com&password=%29qmw_mcBz2ZC&title=Mr&birth_date=20&birth_month=November&birth_year=1950&firstname=Johnny&lastname=Montgomery&company=Hughes-Johnson&address1=00829+Joshua+Harbors+Apt.+142&address2=Suite+070&country=United+States&zipcode=44764&state=Arizona&city=Kyiv&mobile_number=0941043514474&card_number=30532220942177&card_cvc=958&card_exp_date=11%2F33

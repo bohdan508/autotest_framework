@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Justin+Smith&email=aqa_2401c5107e70%40example.com&password=yrhyvWet%29%2488&title=Mrs&birth_date=15&birth_month=July&birth_year=1972&firstname=Justin&lastname=Smith&company=Fritz%2C+Anderson+and+Cook&address1=5950+Morse+Port+Suite+475&address2=Apt.+339&country=India&zipcode=26652&state=New+York&city=South+Christopherview&mobile_number=8451457004631&card_number=4180550923585551834&card_cvc=053&card_exp_date=02%2F35

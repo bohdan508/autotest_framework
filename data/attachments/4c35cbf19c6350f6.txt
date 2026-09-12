@@ -1,0 +1,13 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (158 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Johnny+Montgomery&email=aqa_e58c47c80f24%40example.com&password=%29qmw_mcBz2ZC&title=Mr&birth_date=20&birth_month=November&birth_year=1950&firstname=Johnny&lastname=Montgomery&company=Hughes-Johnson&address1=00829+Joshua+Harbors+Apt.+142&address2=Suite+070&country=United+States&zipcode=44764&state=Arizona&city=Sarahshire&mobile_number=0941043514474&card_number=30532220942177&card_cvc=958&card_exp_date=11%2F33
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (101 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_e58c47c80f24%40example.com&password=%29qmw_mcBz2ZC
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 PUT https://automationexercise.com/api/updateAccount -> HTTP 200 responseCode=200 (136 ms)
+INFO     autotest.http:base_client.py:103   request body: name=NewName&email=aqa_e58c47c80f24%40example.com&password=%29qmw_mcBz2ZC&title=Mr&birth_date=20&birth_month=November&birth_year=1950&firstname=Johnny&lastname=Montgomery&company=Hughes-Johnson&address1=00829+Joshua+Harbors+Apt.+142&address2=Suite+070&country=United+States&zipcode=44764&state=Arizona&city=Kyiv&mobile_number=0941043514474&card_number=30532220942177&card_cvc=958&card_exp_date=11%2F33
+INFO     autotest.http:base_client.py:106   response message: User updated!
+INFO     autotest.http:base_client.py:93 GET https://automationexercise.com/api/getUserDetailByEmail?email=aqa_e58c47c80f24%40example.com -> HTTP 200 responseCode=200 (102 ms)
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (129 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_e58c47c80f24%40example.com&password=%29qmw_mcBz2ZC
+INFO     autotest.http:base_client.py:106   response message: Account deleted!
