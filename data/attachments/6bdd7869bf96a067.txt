@@ -1,0 +1,13 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (312 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Austin+Turner&email=aqa_b47c0bf96c47%40example.com&password=P%40%26X21KcI%25h7&title=Mrs&birth_date=25&birth_month=June&birth_year=1963&firstname=Austin&lastname=Turner&company=Ross-Powell&address1=0234+Jackson+Ridge+Suite+049&address2=Apt.+148&country=Singapore&zipcode=25378&state=Vermont&city=Greenshire&mobile_number=9586321670642&card_number=348159252258962&card_cvc=841&card_exp_date=10%2F34
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (290 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_b47c0bf96c47%40example.com&password=P%40%26X21KcI%25h7
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 PUT https://automationexercise.com/api/updateAccount -> HTTP 200 responseCode=200 (867 ms)
+INFO     autotest.http:base_client.py:103   request body: name=NewName&email=aqa_b47c0bf96c47%40example.com&password=P%40%26X21KcI%25h7&title=Mrs&birth_date=25&birth_month=June&birth_year=1963&firstname=Austin&lastname=Turner&company=Ross-Powell&address1=0234+Jackson+Ridge+Suite+049&address2=Apt.+148&country=Singapore&zipcode=25378&state=Vermont&city=Kyiv&mobile_number=9586321670642&card_number=348159252258962&card_cvc=841&card_exp_date=10%2F34
+INFO     autotest.http:base_client.py:106   response message: User updated!
+INFO     autotest.http:base_client.py:93 GET https://automationexercise.com/api/getUserDetailByEmail?email=aqa_b47c0bf96c47%40example.com -> HTTP 200 responseCode=200 (658 ms)
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (480 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_b47c0bf96c47%40example.com&password=P%40%26X21KcI%25h7
+INFO     autotest.http:base_client.py:106   response message: Account deleted!

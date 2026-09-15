@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Aaron+Oliver&email=aqa_51cdbd5b9a75%40example.com&password=f67tZWsv_5Om&title=Mr&birth_date=20&birth_month=March&birth_year=1996&firstname=Aaron&lastname=Oliver&company=Smith+PLC&address1=64140+Turner+Loop+Suite+134&address2=Suite+507&country=Australia&zipcode=58567&state=Maine&city=Garzastad&mobile_number=8776823471566&card_number=343322523821472&card_cvc=726&card_exp_date=10%2F32

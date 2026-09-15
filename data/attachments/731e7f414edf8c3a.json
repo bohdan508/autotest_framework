@@ -1,0 +1,21 @@
+{
+  "responseCode": 200,
+  "user": {
+    "id": 2808909,
+    "name": "NewName",
+    "email": "aqa_b47c0bf96c47@example.com",
+    "title": "Mrs",
+    "birth_day": "25",
+    "birth_month": "June",
+    "birth_year": "1963",
+    "first_name": "Austin",
+    "last_name": "Turner",
+    "company": "Ross-Powell",
+    "address1": "0234 Jackson Ridge Suite 049",
+    "address2": "Apt. 148",
+    "country": "Singapore",
+    "state": "Vermont",
+    "city": "Kyiv",
+    "zipcode": "25378"
+  }
+}

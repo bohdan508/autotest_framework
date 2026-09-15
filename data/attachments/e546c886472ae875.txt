@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Julie+Douglas&email=aqa_24c9fe0653de%40example.com&password=5dI6Mpo%23%21%23Yx&title=Mr&birth_date=22&birth_month=February&birth_year=2000&firstname=Julie&lastname=Douglas&company=Smith+and+Sons&address1=680+Heather+Bypass&address2=Suite+235&country=Singapore&zipcode=48403&state=North+Dakota&city=Alvaradomouth&mobile_number=8404239934288&card_number=676143938246&card_cvc=862&card_exp_date=10%2F30

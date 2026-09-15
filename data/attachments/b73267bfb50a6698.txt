@@ -1,0 +1,9 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (700 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Aaron+Oliver&email=aqa_51cdbd5b9a75%40example.com&password=f67tZWsv_5Om&title=Mr&birth_date=20&birth_month=March&birth_year=1996&firstname=Aaron&lastname=Oliver&company=Smith+PLC&address1=64140+Turner+Loop+Suite+134&address2=Suite+507&country=Australia&zipcode=58567&state=Maine&city=Garzastad&mobile_number=8776823471566&card_number=343322523821472&card_cvc=726&card_exp_date=10%2F32
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (402 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_51cdbd5b9a75%40example.com&password=f67tZWsv_5Om
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (617 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_51cdbd5b9a75%40example.com&password=f67tZWsv_5Om
+INFO     autotest.http:base_client.py:106   response message: Account deleted!

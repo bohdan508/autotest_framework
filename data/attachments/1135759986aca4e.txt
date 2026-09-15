@@ -1,0 +1,9 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (438 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Sarah+Ross&email=aqa_edcdc21b40e4%40example.com&password=%26ky%26U%24e4U3Ra&title=Mrs&birth_date=11&birth_month=May&birth_year=1955&firstname=Sarah&lastname=Ross&company=Byrd%2C+Solomon+and+King&address1=9158+Perez+Glens&address2=Suite+145&country=New+Zealand&zipcode=50942&state=Vermont&city=Hallmouth&mobile_number=3889433278757&card_number=213155250654881&card_cvc=303&card_exp_date=01%2F34
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (284 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_edcdc21b40e4%40example.com&password=%26ky%26U%24e4U3Ra
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (432 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_edcdc21b40e4%40example.com&password=%26ky%26U%24e4U3Ra
+INFO     autotest.http:base_client.py:106   response message: Account deleted!

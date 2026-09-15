@@ -1,0 +1,9 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (506 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Daniel+Manning&email=aqa_e264bc1d8e42%40example.com&password=%264dgZqJQW22v&title=Mrs&birth_date=21&birth_month=June&birth_year=1964&firstname=Daniel&lastname=Manning&company=White-Allen&address1=9376+Smith+Parkways+Apt.+264&address2=Suite+506&country=Australia&zipcode=29320&state=Oregon&city=Morrisberg&mobile_number=7304444263670&card_number=3544467723187819&card_cvc=068&card_exp_date=03%2F27
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (365 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_e264bc1d8e42%40example.com&password=%264dgZqJQW22v
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (419 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_e264bc1d8e42%40example.com&password=%264dgZqJQW22v
+INFO     autotest.http:base_client.py:106   response message: Account deleted!

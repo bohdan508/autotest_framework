@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Austin+Turner&email=aqa_b47c0bf96c47%40example.com&password=P%40%26X21KcI%25h7&title=Mrs&birth_date=25&birth_month=June&birth_year=1963&firstname=Austin&lastname=Turner&company=Ross-Powell&address1=0234+Jackson+Ridge+Suite+049&address2=Apt.+148&country=Singapore&zipcode=25378&state=Vermont&city=Greenshire&mobile_number=9586321670642&card_number=348159252258962&card_cvc=841&card_exp_date=10%2F34
