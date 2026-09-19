@@ -1,0 +1,21 @@
+{
+  "responseCode": 200,
+  "user": {
+    "id": 2853079,
+    "name": "NewName",
+    "email": "aqa_cc491a63ad60@example.com",
+    "title": "Mrs",
+    "birth_day": "3",
+    "birth_month": "June",
+    "birth_year": "1946",
+    "first_name": "Brianna",
+    "last_name": "Cook",
+    "company": "Martinez PLC",
+    "address1": "55345 Matthew Motorway Apt. 166",
+    "address2": "Suite 776",
+    "country": "Israel",
+    "state": "Arizona",
+    "city": "Kyiv",
+    "zipcode": "12007"
+  }
+}

@@ -1,0 +1,9 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (137 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Rodney+Moses&email=aqa_0fb707c85148%40example.com&password=xZJANdl%25dk%282&title=Mr&birth_date=23&birth_month=November&birth_year=1997&firstname=Rodney&lastname=Moses&company=Brock%2C+Bennett+and+Terrell&address1=8634+Fernandez+Bridge+Suite+270&address2=Suite+874&country=United+States&zipcode=01552&state=Maryland&city=Washingtonfort&mobile_number=3972024606058&card_number=4744977382590110961&card_cvc=412&card_exp_date=07%2F33
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (100 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_0fb707c85148%40example.com&password=xZJANdl%25dk%282
+INFO     autotest.http:base_client.py:106   response message: User exists!
+INFO     autotest.http:base_client.py:93 DELETE https://automationexercise.com/api/deleteAccount -> HTTP 200 responseCode=200 (104 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_0fb707c85148%40example.com&password=xZJANdl%25dk%282
+INFO     autotest.http:base_client.py:106   response message: Account deleted!
