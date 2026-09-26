@@ -1,0 +1,12 @@
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/createAccount -> HTTP 200 responseCode=201 (157 ms)
+INFO     autotest.http:base_client.py:103   request body: name=Amy+Rasmussen&email=aqa_826f02ddc47f%40example.com&password=%26q9%26%23hO%26R8bF&title=Mrs&birth_date=15&birth_month=December&birth_year=2006&firstname=Amy&lastname=Rasmussen&company=Beard+Group&address1=0818+Green+Shoals&address2=Apt.+669&country=Israel&zipcode=38985&state=Wyoming&city=West+Austin&mobile_number=8793089733027&card_number=4562786771112139&card_cvc=654&card_exp_date=08%2F34
+INFO     autotest.http:base_client.py:106   response message: User created!
+INFO     autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=200 (109 ms)
+INFO     autotest.http:base_client.py:103   request body: email=aqa_826f02ddc47f%40example.com&password=%26q9%26%23hO%26R8bF
+INFO     autotest.http:base_client.py:106   response message: User exists!
+WARNING  autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=404 (111 ms)
+WARNING  autotest.http:base_client.py:103   request body: email=aqa_826f02ddc47f%40example.com&password=%26q9%26%23hO%26R8bF
+WARNING  autotest.http:base_client.py:106   response message: User not found!
+WARNING  autotest.http:base_client.py:93 POST https://automationexercise.com/api/verifyLogin -> HTTP 200 responseCode=404 (116 ms)
+WARNING  autotest.http:base_client.py:103   request body: email=aqa_826f02ddc47f%40example.com&password=%26q9%26%23hO%26R8bF
+WARNING  autotest.http:base_client.py:106   response message: User not found!

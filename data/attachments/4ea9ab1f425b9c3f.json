@@ -1,0 +1,21 @@
+{
+  "responseCode": 200,
+  "user": {
+    "id": 2928440,
+    "name": "NewName",
+    "email": "aqa_8e959946498a@example.com",
+    "title": "Mr",
+    "birth_day": "3",
+    "birth_month": "March",
+    "birth_year": "1955",
+    "first_name": "Alexander",
+    "last_name": "Rhodes",
+    "company": "Glenn, Glenn and Garcia",
+    "address1": "675 Wilson Ferry",
+    "address2": "Apt. 974",
+    "country": "Singapore",
+    "state": "Minnesota",
+    "city": "Kyiv",
+    "zipcode": "20128"
+  }
+}

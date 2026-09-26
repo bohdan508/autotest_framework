@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Robert+Hobbs&email=aqa_431939cb6dfd%40example.com&password=%5EUSg%23%2BrO1FAA&title=Mr&birth_date=31&birth_month=March&birth_year=1947&firstname=Robert&lastname=Hobbs&company=Bray+Group&address1=068+Smith+Forks+Apt.+615&address2=Apt.+176&country=India&zipcode=92886&state=Rhode+Island&city=South+Brittanychester&mobile_number=3680292574772&card_number=501854280689&card_cvc=002&card_exp_date=09%2F29

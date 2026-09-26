@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Anthony+Mason&email=aqa_a2d0827fd391%40example.com&password=c%21v7QQBULi%24r&title=Mr&birth_date=28&birth_month=January&birth_year=1976&firstname=Anthony&lastname=Mason&company=Morales%2C+Conley+and+Leach&address1=60812+Stacy+Fords+Suite+844&address2=Suite+464&country=Canada&zipcode=96739&state=North+Dakota&city=North+Zachary&mobile_number=0584022561657&card_number=38002777231301&card_cvc=692&card_exp_date=12%2F32

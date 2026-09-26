@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Amy+Rasmussen&email=aqa_826f02ddc47f%40example.com&password=%26q9%26%23hO%26R8bF&title=Mrs&birth_date=15&birth_month=December&birth_year=2006&firstname=Amy&lastname=Rasmussen&company=Beard+Group&address1=0818+Green+Shoals&address2=Apt.+669&country=Israel&zipcode=38985&state=Wyoming&city=West+Austin&mobile_number=8793089733027&card_number=4562786771112139&card_cvc=654&card_exp_date=08%2F34
