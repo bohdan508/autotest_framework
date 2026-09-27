@@ -1,0 +1,21 @@
+{
+  "responseCode": 200,
+  "user": {
+    "id": 2938065,
+    "name": "NewName",
+    "email": "aqa_f1a5d9abb8b0@example.com",
+    "title": "Mr",
+    "birth_day": "20",
+    "birth_month": "June",
+    "birth_year": "1950",
+    "first_name": "Melissa",
+    "last_name": "Foster",
+    "company": "Munoz and Sons",
+    "address1": "85478 Acevedo Prairie",
+    "address2": "Apt. 916",
+    "country": "Australia",
+    "state": "New Hampshire",
+    "city": "Kyiv",
+    "zipcode": "04833"
+  }
+}

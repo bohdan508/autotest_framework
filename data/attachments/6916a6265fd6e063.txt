@@ -1,0 +1,2 @@
+GET https://automationexercise.com/api/getUserDetailByEmail?email=aqa_f1a5d9abb8b0%40example.com
+

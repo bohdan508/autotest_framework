@@ -1,0 +1,3 @@
+POST https://automationexercise.com/api/createAccount
+
+name=Christian+Bentley&email=aqa_47e294f4b461%40example.com&password=%21tTdyABp%263In&title=Mrs&birth_date=2&birth_month=November&birth_year=1983&firstname=Christian&lastname=Bentley&company=Smith%2C+Ford+and+Mayo&address1=9583+Doyle+Dale+Apt.+290&address2=Apt.+813&country=Canada&zipcode=94006&state=Massachusetts&city=East+Joyce&mobile_number=4329361644264&card_number=3566789460595984&card_cvc=167&card_exp_date=04%2F28
